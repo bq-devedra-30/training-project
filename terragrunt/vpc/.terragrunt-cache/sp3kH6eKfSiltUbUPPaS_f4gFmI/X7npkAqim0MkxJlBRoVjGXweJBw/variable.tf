@@ -1,65 +1,50 @@
-variable "main_cidr_block" {
-  type    = string
-  default = "10.0.0.0/16"
-}
-
-variable "public_cidr_blocks" {
-  type    = list(string)
-  default = ["10.0.1.0/24", "10.0.2.0/24"]
-}
-
-
-variable "private_cidr_blocks" {
-  type    = list(string)
-  default = ["10.0.3.0/24", "10.0.4.0/24"]
-}
-
-variable "region" {
-    type = string
-    default = "us-east-1"
-}
-variable "enable_dns_hostnames" {
-  type = bool
-  default = false
+variable "vpc_cidr" {
+  type = string
 
 }
-variable "enable_dns_support" {
-  type = bool
-  default = false
-  
-}
-
 variable "aws_availability_zones_state" {
   type = string
-  default = "available"
-  
 }
-
-variable "aws_vpc_tagname" {
-  type = string
-  default = "main"
-  
-}
-
-variable "public_subnets_map_public_ip_on_launch" {
+variable "map_public_ip_on_launch" {
   type = bool
-  default = true
   
 }
 
-
-variable "private_subnets_map_public_ip_on_launch" {
-  type = bool
-  default = false
-  
-}
-
-variable "aws_security_group_name" {
-   type  = string
-   default = "presentation_tier_connection" 
-}
-
-variable "aws_security_group_protocol" {
+variable "aws_vpc_tags" {
   type = string
-  default = "tcp"
+  
+}
+
+# variable "aws_public_subnate_tags" {
+#   type = string
+# }
+# variable "aws_private_subnate_tags" {
+#   type = string
+# }
+variable "aws_internet_gateway_tags" {
+  type = string
+  
+}
+
+variable "aws_nat_gateway_tags" {
+  type = string
+}
+variable "aws_eip_tags" {
+  type = string
+}
+
+#
+variable "public_cidr_blocks" {
+ default = ["10.0.0.0/28", "10.0.0.32/28"]
+}
+
+variable "private_cidr_blocks" {
+default = ["10.0.0.16/28", "10.0.0.48/28"]
+
+}
+variable "aws_route_table_public_tags" {
+  
+}
+variable "aws_route_table_private_tags" {
+  
 }

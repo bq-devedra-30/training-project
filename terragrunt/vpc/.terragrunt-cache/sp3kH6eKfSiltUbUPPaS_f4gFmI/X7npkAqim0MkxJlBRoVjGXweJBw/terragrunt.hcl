@@ -1,6 +1,4 @@
-include "backend" {
-  path = find_in_parent_folders("backend.hcl")
-}
+
 
 terraform {
   source = "../../../modules/project/vpc"
@@ -8,16 +6,18 @@ terraform {
 
 # See source module for input descriptions
 inputs ={
-    main_cidr_block = "10.0.0.0/16"
-    public_cidr_blocks = ["10.0.1.0/24", "10.0.2.0/24"]
-    private_cidr_blocks = ["10.0.3.0/24", "10.0.4.0/24"]
-    region = "us-east-1"
-    enable_dns_hostnames = false
-    enable_dns_support  = false
-    aws_availability_zones_state = "available"
-    aws_vpc_tagname = "main"
-    public_subnets_map_public_ip_on_launch = true
-    private_subnets_map_public_ip_on_launch = false
-    aws_security_group_name = "presentation_tier_connection"
-    aws_security_group_protocol = "tcp"
+  vpc_cidr = "10.0.0.0/24"
+  aws_vpc_tags = "vpc"
+  aws_availability_zones_state = "available"
+  map_public_ip_on_launch = true
+  #aws_public_subnate_tags = "public_subnet_${count.index + 1}"
+  #aws_private_subnate_tags  = "private_subnet_${count.index + 1}"
+  aws_nat_gateway_tags = "ngw"
+  aws_eip_tags = "eip"
+  aws_route_table_private_tags = "privateroute"
+  aws_route_table_public_tags = "publicroute"
+  aws_internet_gateway_tags = "igw"
+  #aws_route_table_cidr = "0.0.0.0/0"
+  #public_cidr_blocks = ["10.0.0.0/28", "10.0.0.32/28"]
+  #private_cidr_blocks = ["10.0.0.16/28", "10.0.0.48/28"]
   }

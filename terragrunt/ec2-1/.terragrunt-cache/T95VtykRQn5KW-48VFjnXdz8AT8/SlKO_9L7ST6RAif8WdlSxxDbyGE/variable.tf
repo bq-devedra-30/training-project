@@ -10,7 +10,7 @@ variable "web_server_count" {
 
 variable "web_server_ami" {
   description = "AMI ID for web servers"
-  default = "ami-04cb4ca688797756f"
+  default     = "ami-053b0d53c279acc90"
 }
 
 variable "web_server_instance_type" {
@@ -19,8 +19,25 @@ variable "web_server_instance_type" {
 }
 
 variable "subnate_ids" {
-  type        = list(string)
-  default     = []# Populate with subnate IDs from the VPC component output
+  type    = list(string)
+  default = [] # Populate with subnate IDs from the VPC component output
 }
 
-variable "private_subnate_ids" {}
+variable "private_subnate_ids" {
+  type = string
+}
+
+
+variable "aws_security_group_webserver_name" {
+  type = string
+}
+
+variable "vpc_id" {
+   type = string
+}
+
+#  variable "security_group_id" {
+#    type = string
+# }
+
+variable "key_name" {}
